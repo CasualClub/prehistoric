@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/prehistoric?useUnicode=true&characterEncoding=UTF8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull
+    url: jdbc:mysql://192.168.207.12:49154/mysql?useUnicode=true&characterEncoding=UTF8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull
     username: root
-    password: 123321
+    password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
       minimum-idle: 5
@@ -13,5 +13,9 @@ spring:
       max-lifetime: 1200000
       connection-timeout: 20000
       connection-test-query: SELECT 1 from DUAL
+  redis:
+    host: 192.168.207.12
+    port: 6379
+    password:
   session:
     store-type: redis
