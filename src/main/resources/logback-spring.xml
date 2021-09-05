@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <!-- 开发环境 -->
+    <springProfile name="dev">
+        <!--设置存储路径变量-->
+        <property name="logDir" value="./logs"/>
+        <property name="maxHistory" value="60"/>
+        <!--控制台输出appender-->
+        <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+            <!--设置输出格式-->
+            <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+                <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+                <!--设置编码-->
+                <charset>UTF-8</charset>
+            </encoder>
+        </appender>
+    </springProfile>
+
+    <logger name="com.casualclub.prehistoric.dao" level="DEBUG"/>
+    <logger name="com.casualclub.prehistoric.controller" level="DEBUG"/>
+    <logger name="com.casualclub.prehistoric.service" level="DEBUG"/>
+    <logger name="java.sql.Connection" level="DEBUG"/>
+    <logger name="java.sql.Statement" level="DEBUG"/>
+    <logger name="java.sql.PreparedStatement" level="DEBUG"/>
+
+    <!-- 测试环境及生产环境 -->
+    <springProfile name="test, pro">
+        <!--设置存储路径变量-->
+        <property name="logDir" value="/data/app/logs"/>
+        <property name="maxHistory" value="60"/>
+        <!--文件输出,时间窗口滚动-->
+        <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <Prudent>true</Prudent>
+            <append>true</append>
+            <!--日志名,指定最新的文件名，其他文件名使用fileNamePattern -->
+            <File>${logDir}/out.log</File>
+            <!--文件滚动模式-->
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <!--日志文件输出的文件名,可设置文件类型为gz,开启文件压缩-->
+                <fileNamePattern>${logDir}/%d{yyyyMMdd}/error%d{yyyyMMdd}.log</fileNamePattern>
+                <!--日志文件保留天数-->
+                <maxHistory>${maxHistory}</maxHistory>
+                <!--按大小分割同一天的-->
+                <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                    <maxFileSize>30MB</maxFileSize>
+                </timeBasedFileNamingAndTriggeringPolicy>
+            </rollingPolicy>
+
+            <!--输出格式-->
+            <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+                <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+                <!--设置编码-->
+                <charset>UTF-8</charset>
+            </encoder>
+        </appender>
+        <root level="debug">
+            <appender-ref ref="file" />
+        </root>
+    </springProfile>
+
+</configuration>
