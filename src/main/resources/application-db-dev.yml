@@ -13,10 +13,6 @@ spring:
       max-lifetime: 1200000
       connection-timeout: 20000
       connection-test-query: SELECT 1 from DUAL
-  redis:
-    host: 192.168.207.12
-    port: 6379
-    password:
   session:
     store-type: redis
   redis:
