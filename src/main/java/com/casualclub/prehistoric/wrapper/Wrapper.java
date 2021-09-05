@@ -32,6 +32,26 @@ public class Wrapper<T> implements Serializable {
     static final String ERROR_MESSAGE = "系统异常";
 
     /**
+     * 未登录错误码
+     */
+    static final int UNAUTHOR_ERROR_CODE = 401;
+
+    /**
+     * 未登录错误信息
+     */
+    static final String UNAUTHOR_ERROR_MESSAGE = "未登录!";
+
+    /**
+     * 没有权限错误码
+     */
+    static final int FORBIDDEN_ERROR_CODE = 403;
+
+    /**
+     * 没有权限错误信息
+     */
+    static final String FORBIDDEN_ERROR_MESSAGE = "没有权限!";
+
+    /**
      * 状态码
      */
     private int code;
