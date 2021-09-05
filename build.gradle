@@ -25,16 +25,36 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
-    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-    implementation 'org.springframework.boot:spring-boot-starter-security'
-    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    // spring base
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    //  restful validation
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    //  spring session
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     implementation 'org.springframework.session:spring-session-data-redis'
-    implementation 'org.springframework.session:spring-session-jdbc'
+    implementation 'org.apache.commons:commons-pool2:2.5.0'
+
+    // jdbc
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
     runtimeOnly 'mysql:mysql-connector-java'
+
+    // mybatisPlus
     implementation 'com.baomidou:mybatis-plus-boot-starter:3.4.3.2'
+
+    //  swagger
+    implementation 'io.springfox:springfox-swagger2:2.9.2'
+    implementation 'io.springfox:springfox-swagger-ui:2.9.2'
+
+    //  commons tools
+    implementation 'org.apache.commons:commons-lang3:3.10'
+
+    //  json tools
+    implementation 'cn.hutool:hutool-json:5.4.0'
+
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
