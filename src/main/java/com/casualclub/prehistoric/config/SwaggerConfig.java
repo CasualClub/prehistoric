@@ -71,12 +71,12 @@ public class SwaggerConfig {
         return new ApiInfoBuilder()
                 .title("prehistoric")
                 .description("prehistoric Api Documentation Center")
-                .version("1.0")
+                .version("1.0.0")
                 .contact(new Contact("prehistoric", "http://github.com/casualclub", "postmaster@casualclub.com"))
                 .build();
     }
 
-    private List<ApiKey> securitySchemes() {
+    private List<SecurityScheme> securitySchemes() {
         return Collections.singletonList(new ApiKey("Authorization", "Authorization", "header"));
     }
 
