@@ -15,3 +15,10 @@ logging:
   file:
     max-size: 30MB
     path: ./log
+
+security:
+  ignore:
+    urls:
+      - /auth/**
+    permitUrls:
+      - /oauth/token
